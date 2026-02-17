@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import { Project } from '@/data/portfolio';
 import { X, Github, ExternalLink, Quote, Layers, CheckCircle, Terminal, Image as ImageIcon } from 'lucide-react';
 import Link from 'next/link';
@@ -25,17 +25,38 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
         };
     }, [isOpen]);
 
-    const overlayVariants = {
+    const overlayVariants: Variants = {
         hidden: { opacity: 0 },
-        visible: { opacity: 1, transition: { duration: 0.3 } },
-        exit: { opacity: 0, transition: { duration: 0.2 } },
+        visible: {
+            opacity: 1,
+            transition: { duration: 0.3 },
+        },
+        exit: {
+            opacity: 0,
+            transition: { duration: 0.2 },
+        },
     };
 
-    const modalVariants = {
+    const modalVariants: Variants = {
         hidden: { opacity: 0, scale: 0.9, y: 20 },
-        visible: { opacity: 1, scale: 1, y: 0, transition: { type: 'spring', damping: 25, stiffness: 300 } },
-        exit: { opacity: 0, scale: 0.95, y: 20, transition: { duration: 0.2 } },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            transition: {
+                type: "spring",
+                damping: 25,
+                stiffness: 300,
+            },
+        },
+        exit: {
+            opacity: 0,
+            scale: 0.95,
+            y: 20,
+            transition: { duration: 0.2 },
+        },
     };
+
 
     return (
         <AnimatePresence>

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, Variants } from "framer-motion";
 import { useRef } from "react";
 
 interface TextRevealProps {
@@ -15,27 +15,32 @@ export function TextReveal({ children, className, delay = 0 }: TextRevealProps) 
 
     const words = children.split(" ");
 
-    const container = {
+    // 👇 container with dynamic variant
+    const container: Variants = {
         hidden: { opacity: 0 },
-        visible: (i = 1) => ({
+        visible: (i: number = 1) => ({
             opacity: 1,
-            transition: { staggerChildren: 0.12, delayChildren: 0.04 * i + delay },
+            transition: {
+                staggerChildren: 0.12,
+                delayChildren: 0.04 * i + delay,
+            },
         }),
     };
 
-    const child = {
-        visible: {
-            opacity: 1,
-            y: 0,
+    // 👇 child variant
+    const child: Variants = {
+        hidden: {
+            opacity: 0,
+            y: 20,
             transition: {
                 type: "spring",
                 damping: 12,
                 stiffness: 100,
             },
         },
-        hidden: {
-            opacity: 0,
-            y: 20,
+        visible: {
+            opacity: 1,
+            y: 0,
             transition: {
                 type: "spring",
                 damping: 12,
