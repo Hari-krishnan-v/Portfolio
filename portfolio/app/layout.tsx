@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { portfolioData } from '@/data/portfolio';
 import { DesktopProvider } from '@/context/DesktopContext';
 import { TopBar } from '@/components/ui/TopBar';
+import Image from 'next/image';
 
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' });
 
@@ -78,13 +79,20 @@ export default function RootLayout({
 
                 <DesktopProvider>
                     {/* Desktop Wallpaper */}
-                    <div
-                        className="fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat"
-                        style={{ backgroundImage: "url('/background.jpg')" }}
-                    >
-                        {/* Subtle overlay to ensure text readability and match the theme */}
-                        <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
+                    import Image from "next/image";
+
+                    <div className="fixed inset-0 -z-10">
+                        <Image
+                            src="/background.jpg"
+                            alt="Background"
+                            fill
+                            priority
+                            quality={100}
+                            sizes="100vw"
+                            className="object-cover object-center"
+                        />
                     </div>
+
 
                     {/* Global Scanline Overlay */}
                     <div className="fixed inset-0 pointer-events-none z-50 mix-blend-overlay opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
