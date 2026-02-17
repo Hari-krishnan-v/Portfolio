@@ -80,7 +80,7 @@ export default function RootLayout({
                     {/* Desktop Wallpaper */}
                     <div
                         className="fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat"
-                        style={{ backgroundImage: "url('/882637.jpg')" }}
+                        style={{ backgroundImage: "url('/background.jpg')" }}
                     >
                         {/* Subtle overlay to ensure text readability and match the theme */}
                         <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
