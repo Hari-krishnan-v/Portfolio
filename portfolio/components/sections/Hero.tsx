@@ -13,7 +13,7 @@ export function Hero() {
     const { personalInfo } = portfolioData;
 
     return (
-        <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 bg-background text-foreground">
+        <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 text-foreground">
             {/* Ambient Background */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
                 <motion.div

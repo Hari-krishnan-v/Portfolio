@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-export type WindowId = 'about' | 'experience' | 'projects' | 'skills' | 'contact' | 'hero';
+export type WindowId = 'about' | 'experience' | 'projects' | 'skills' | 'contact' | 'hero' | 'certifications';
 
 interface WindowState {
     id: WindowId;
@@ -30,6 +30,7 @@ const initialWindows: Record<WindowId, WindowState> = {
     projects: { id: 'projects', isOpen: true, isMinimized: false, zIndex: 1 },
     skills: { id: 'skills', isOpen: true, isMinimized: false, zIndex: 1 },
     contact: { id: 'contact', isOpen: true, isMinimized: false, zIndex: 1 },
+    certifications: { id: 'certifications', isOpen: true, isMinimized: false, zIndex: 1 },
 };
 
 export function DesktopProvider({ children }: { children: ReactNode }) {

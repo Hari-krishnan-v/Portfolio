@@ -9,10 +9,10 @@ export function Experience() {
     const { experience } = portfolioData;
 
     return (
-        <section id="experience" className="py-20 bg-background relative overflow-hidden">
+        <section id="experience" className="py-20 relative overflow-hidden">
 
             <div className="max-w-5xl mx-auto px-6">
-                <MacWindow id="experience" title="system_logs.log" className="border-terminal-border bg-[#0d1117] min-h-[600px]">
+                <MacWindow id="experience" title="system_logs.log" className="border-terminal-border  min-h-[600px]">
                     <div className="font-mono text-xs md:text-sm space-y-4 text-[#c9d1d9]">
 
                         {/* Header Logs */}

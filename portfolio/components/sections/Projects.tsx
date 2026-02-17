@@ -15,7 +15,7 @@ export function Projects() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
-        <section id="projects" className="py-20 bg-background relative overflow-hidden">
+        <section id="projects" className="py-20 relative overflow-hidden">
 
             <div className="max-w-7xl mx-auto px-6">
                 <MacWindow id="projects" title="~/projects (File Explorer)" className="bg-[#0d1117] min-h-[600px] border-terminal-border">

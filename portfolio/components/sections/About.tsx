@@ -9,7 +9,7 @@ export function About() {
     const { professionalSummary, education, experience } = portfolioData;
 
     return (
-        <section id="about" className="py-20 bg-background relative overflow-hidden">
+        <section id="about" className="py-20 relative overflow-hidden">
 
             <div className="max-w-4xl mx-auto px-6">
                 <MacWindow id="about" title="README.md" className="border-terminal-border">

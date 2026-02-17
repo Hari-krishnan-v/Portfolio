@@ -18,7 +18,7 @@ export default function Home() {
             <ScrollProgress />
             <Navbar />
 
-            <main className="bg-background min-h-screen overflow-x-hidden selection:bg-gray-200 selection:text-black">
+            <main className="min-h-screen overflow-x-hidden selection:bg-gray-200 selection:text-black">
                 <Hero />
                 <About />
                 <Experience />

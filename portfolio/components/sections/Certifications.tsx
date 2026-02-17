@@ -2,91 +2,83 @@
 
 import { motion } from 'framer-motion';
 import { portfolioData } from '@/data/portfolio';
-import { Award, Trophy } from 'lucide-react';
-import { Spotlight } from '@/components/ui/Spotlight';
+import { Award, Trophy, ChevronRight } from 'lucide-react';
+import { MacWindow } from '@/components/ui/MacWindow';
 
 export function Certifications() {
     const { certifications, achievements } = portfolioData;
 
     return (
-        <section className="py-32 bg-background relative overflow-hidden">
-            {/* Background glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none" />
+        <section id="certifications" className="py-20 relative overflow-hidden">
+            <div className="max-w-5xl mx-auto px-6">
+                <MacWindow id="certifications" title="awards_and_certs.sh" className="border-terminal-border bg-[#0d1117] min-h-[500px]">
+                    <div className="font-mono text-xs md:text-sm space-y-8">
 
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-
-                    {/* Certifications */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, margin: "-100px" }}
-                        transition={{ duration: 0.6, type: "spring", stiffness: 50 }}
-                    >
-                        <div className="flex items-center gap-4 mb-10">
-                            <div className="p-3 bg-blue-500/10 rounded-xl text-blue-400 border border-blue-500/20">
-                                <Award size={24} />
-                            </div>
-                            <h2 className="text-3xl font-bold text-white">Certifications</h2>
-                        </div>
-
+                        {/* Certifications Selection */}
                         <div className="space-y-4">
-                            {certifications.map((cert, idx) => (
-                                <motion.div
-                                    key={idx}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.1, type: "spring", stiffness: 50 }}
-                                >
-                                    <Spotlight className="group p-6 rounded-xl border border-white/10 bg-white/5 hover:border-white/20 transition-colors flex items-start gap-4 cursor-default">
-                                        <motion.div
-                                            className="mt-1.5 min-w-[8px] h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"
-                                            whileHover={{ scale: 1.5 }}
-                                        />
-                                        <span className="font-medium text-gray-200 group-hover:text-white transition-colors leading-relaxed">{cert}</span>
-                                    </Spotlight>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </motion.div>
-
-                    {/* Achievements */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, margin: "-100px" }}
-                        transition={{ duration: 0.6, type: "spring", stiffness: 50, delay: 0.2 }}
-                    >
-                        <div className="flex items-center gap-4 mb-10">
-                            <div className="p-3 bg-yellow-500/10 rounded-xl text-yellow-400 border border-yellow-500/20">
-                                <Trophy size={24} />
+                            <div className="flex items-center gap-2 text-terminal-blue font-bold">
+                                <Award size={16} />
+                                <span>$ list certifications --verified</span>
                             </div>
-                            <h2 className="text-3xl font-bold text-white">Achievements</h2>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pl-4">
+                                {certifications.map((cert, idx) => (
+                                    <motion.div
+                                        key={idx}
+                                        initial={{ opacity: 0, x: -10 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: idx * 0.05 }}
+                                        className="group flex items-start gap-3 p-3 rounded border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-terminal-blue/30 transition-all cursor-default"
+                                    >
+                                        <div className="mt-1">
+                                            <ChevronRight size={14} className="text-terminal-green opacity-50 group-hover:opacity-100 transition-opacity" />
+                                        </div>
+                                        <span className="text-[#c9d1d9] leading-relaxed group-hover:text-white transition-colors">
+                                            {cert}
+                                        </span>
+                                    </motion.div>
+                                ))}
+                            </div>
                         </div>
 
-                        <div className="space-y-4">
-                            {achievements.map((ach, idx) => (
-                                <motion.div
-                                    key={idx}
-                                    initial={{ opacity: 0, x: 20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.1, type: "spring", stiffness: 50 }}
-                                >
-                                    <Spotlight className="group p-6 rounded-xl border border-white/10 bg-white/5 hover:border-white/20 transition-colors flex items-start gap-4 cursor-default">
-                                        <motion.div
-                                            className="mt-1.5 min-w-[8px] h-2 rounded-full bg-yellow-500 shadow-[0_0_8px_rgba(234,179,8,0.6)]"
-                                            whileHover={{ scale: 1.5 }}
-                                        />
-                                        <span className="font-medium text-gray-200 group-hover:text-white transition-colors leading-relaxed">{ach}</span>
-                                    </Spotlight>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </motion.div>
+                        {/* Achievements Section */}
+                        <div className="space-y-4 pt-4 border-t border-[#30363d]">
+                            <div className="flex items-center gap-2 text-terminal-yellow font-bold">
+                                <Trophy size={16} />
+                                <span>$ grep "milestone" ./achievements.txt</span>
+                            </div>
 
-                </div>
+                            <div className="space-y-2 pl-4">
+                                {achievements.map((ach, idx) => (
+                                    <motion.div
+                                        key={idx}
+                                        initial={{ opacity: 0, x: 10 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: idx * 0.05 }}
+                                        className="flex items-center gap-3 py-1 group"
+                                    >
+                                        <span className="text-[#8b949e] font-bold">[*]</span>
+                                        <span className="text-[#c9d1d9] group-hover:text-terminal-yellow transition-colors">
+                                            {ach}
+                                        </span>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Terminal Footer */}
+                        <div className="flex items-center gap-2 pt-4">
+                            <span className="text-terminal-green">user@portfolio:~/certifications$</span>
+                            <motion.span
+                                animate={{ opacity: [1, 0] }}
+                                transition={{ duration: 0.8, repeat: Infinity }}
+                                className="w-2 h-4 bg-terminal-green block"
+                            />
+                        </div>
+                    </div>
+                </MacWindow>
             </div>
         </section>
     );

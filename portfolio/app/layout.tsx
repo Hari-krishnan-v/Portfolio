@@ -70,13 +70,22 @@ export default function RootLayout({
 
     return (
         <html lang="en" className="scroll-smooth">
-            <body className={cn("min-h-screen bg-background font-mono antialiased selection:bg-terminal-green selection:text-black pt-8", jetbrainsMono.variable)}>
+            <body className={cn("min-h-screen font-mono antialiased selection:bg-terminal-green selection:text-black pt-8", jetbrainsMono.variable)}>
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
                 />
 
                 <DesktopProvider>
+                    {/* Desktop Wallpaper */}
+                    <div
+                        className="fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat"
+                        style={{ backgroundImage: "url('/882637.jpg')" }}
+                    >
+                        {/* Subtle overlay to ensure text readability and match the theme */}
+                        <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
+                    </div>
+
                     {/* Global Scanline Overlay */}
                     <div className="fixed inset-0 pointer-events-none z-50 mix-blend-overlay opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
                     <div className="fixed inset-0 pointer-events-none z-50 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%] opacity-10"></div>

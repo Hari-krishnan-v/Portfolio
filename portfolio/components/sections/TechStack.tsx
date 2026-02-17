@@ -17,7 +17,7 @@ export function TechStack() {
     ];
 
     return (
-        <section id="skills" className="py-20 bg-background relative overflow-hidden">
+        <section id="skills" className="py-20 relative overflow-hidden">
             <div className="max-w-5xl mx-auto px-6">
                 <MacWindow id="skills" title="package.json" className="bg-[#0d1117] border-terminal-border">
                     <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-8 font-mono text-xs">
