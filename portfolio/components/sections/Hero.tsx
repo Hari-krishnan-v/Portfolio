@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { portfolioData } from '@/data/portfolio';
 import { Magnetic } from '@/components/ui/Magnetic';
 import { TextReveal } from '@/components/ui/TextReveal';
@@ -90,9 +91,13 @@ export function Hero() {
                     >
                         <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse" />
                         <div className="relative w-full h-full rounded-[2rem] border border-white/5 bg-neutral-900/50 backdrop-blur-xl flex items-center justify-center overflow-hidden shadow-2xl skew-y-3 hover:skew-y-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
-                            {/* Placeholder for a cool image or 3D model */}
-                            <div className="absolute inset-0 bg-grid-white/[0.04] bg-[size:32px]"></div>
-                            <span className="text-8xl font-black text-white/5 select-none">HK</span>
+                            <Image
+                                src="/me.jpg"
+                                alt={personalInfo.name}
+                                fill
+                                className="object-cover"
+                                priority
+                            />
                         </div>
                     </motion.div>
                 </div>

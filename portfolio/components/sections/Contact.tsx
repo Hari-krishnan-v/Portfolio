@@ -121,7 +121,7 @@ export function Contact() {
                         <Magnetic strength={0.2} >
                             <button
                                 type="submit"
-                                className="w-full py-4 bg-white text-black rounded-xl font-bold text-lg hover:bg-gray-200 transition-colors shadow-lg hover:shadow-xl active:scale-[0.99] transform duration-200 flex items-center justify-center gap-2"
+                                className="w-full py-4 bg-gradient-to-r from-blue-600 to-violet-600 text-white rounded-xl font-bold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all active:scale-[0.99] transform duration-200 flex items-center justify-center gap-2"
                             >
                                 Send Message <Send size={20} />
                             </button>
