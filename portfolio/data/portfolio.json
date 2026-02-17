@@ -1,0 +1,258 @@
+{
+    "personalInfo": {
+        "name": "Hari Krishnan",
+        "email": "harikrishnanvimal777@gmail.com",
+        "phone": "+91 8089364271",
+        "location": "Kerala, India",
+        "github": "https://github.com/Hari-krishnan-v",
+        "linkedin": "https://www.linkedin.com/in/hari-krishnan-v-3901b7317",
+        "role": "Full Stack Developer"
+    },
+    "professionalSummary": "Full Stack Developer at Spiderworks Technologies specializing in scalable, production-grade applications. Experienced in microservices, event-driven systems, real-time data processing with Kafka and Redis, and AI-powered mobile and web apps. Proven ability to lead internal enterprise portal development from architecture to deployment.",
+    "experience": [
+        {
+            "company": "Spiderworks Technologies",
+            "role": "Full Stack Developer",
+            "employmentType": "Full-time",
+            "previousRole": "Node.js Intern",
+            "description": [
+                "Promoted from intern to permanent full-time developer.",
+                "Leading development of internal enterprise portals.",
+                "Working across accounts, work orders, invoice, and business modules.",
+                "Designing scalable backend systems and responsive frontend applications.",
+                "Handling database design, API architecture, and performance optimization."
+            ]
+        }
+    ],
+    "education": [
+        {
+            "degree": "Bachelor of Computer Applications (BCA)",
+            "university": "Kerala University",
+            "year": "2025",
+            "cgpa": "6.49"
+        }
+    ],
+    "skills": {
+        "languages": [
+            "JavaScript",
+            "TypeScript",
+            "Python",
+            "C",
+            "C++"
+        ],
+        "frontend": [
+            "React.js",
+            "React Native",
+            "Redux",
+            "Tailwind CSS",
+            "Bootstrap",
+            "Electron.js"
+        ],
+        "backend": [
+            "Node.js",
+            "Express.js",
+            "Django",
+            "DRF",
+            "FastAPI",
+            "Flask"
+        ],
+        "databases": [
+            "MongoDB",
+            "PostgreSQL",
+            "MySQL"
+        ],
+        "architecture": [
+            "Microservices",
+            "REST API",
+            "MVC",
+            "Event-driven architecture"
+        ],
+        "devopsAndTools": [
+            "Kafka",
+            "Redis",
+            "Docker (basic)",
+            "Git",
+            "Firebase",
+            "Postman",
+            "Nx Monorepo",
+            "Prisma ORM"
+        ],
+        "authentication": [
+            "JWT",
+            "OAuth (basic)"
+        ]
+    },
+    "projects": [
+        {
+            "name": "RentEazy",
+            "tag": "Rental Property Management Platform",
+            "status": "Ongoing",
+            "stack": [
+                "TypeScript",
+                "Node.js",
+                "Express.js",
+                "PostgreSQL",
+                "Prisma ORM",
+                "Apache Kafka",
+                "Nx Monorepo",
+                "Docker"
+            ],
+            "highlights": [
+                "Event-driven microservices architecture",
+                "Role-based access (Admin, Host, Tenant)",
+                "Property, booking, and payment management",
+                "Scalable monorepo structure"
+            ],
+            "longDescription": "RentEazy is a comprehensive rental property management platform designed to streamline the entire lifecycle of property rental. Built with a scalable microservices architecture using Nx Monorepo, it efficiently handles complex workflows between Admins, Hosts, and Tenants. The system leverages Apache Kafka for asynchronous communication, ensuring high availability and fault tolerance.",
+            "features": [
+                "User Roles: Distinct dashboards for Admin, Host, and Tenant.",
+                "Property Management: Hosts can list, edit, and manage property availability.",
+                "Booking System: Seamless booking flow with conflict detection.",
+                "Payments: Integrated secure payment gateways.",
+                "Real-time Notifications: Event-driven alerts for booking status updates."
+            ],
+            "challenges": [
+                "Managing distributed state across microservices.",
+                "Ensuring data consistency with eventual consistency patterns using Kafka.",
+                "Optimizing database queries for complex property filtering."
+            ],
+            "developerThought": "Building RentEazy taught me the intricacies of distributed systems. Choosing Kafka for inter-service communication was a game-changer for decoupling services, allowing independent scaling.",
+            "instructions": "1. Clone the repo.\n2. Run `npm install`.\n3. Spin up Docker containers for Postgres and Kafka.\n4. Run `nx serve host` and `nx serve tenant`."
+        },
+        {
+            "name": "ShopeMe",
+            "tag": "Retail Billing System",
+            "stack": [
+                "Node.js",
+                "Express.js",
+                "MongoDB",
+                "Redis",
+                "Kafka"
+            ],
+            "highlights": [
+                "Handled 1000+ daily transactions",
+                "Real-time inventory updates using Kafka",
+                "High-performance billing workflow"
+            ],
+            "longDescription": "ShopeMe is a high-performance retail billing system built to handle heavy transaction loads. It utilizes Redis for caching frequently accessed product data and Kafka for real-time inventory synchronization, ensuring that stock levels are always accurate across multiple checkout counters.",
+            "features": [
+                "Fast Billing: Optimized checkout process for speed.",
+                "Inventory Sync: Real-time updates across multiple terminals.",
+                "Sales Analytics: Dashboard for daily/monthly sales reports.",
+                "Barcode Support: Integrated barcode scanner support."
+            ],
+            "challenges": [
+                "Handling concurrency during peak billing hours.",
+                "Minimizing latency for database writes using write-behind caching."
+            ],
+            "developerThought": "Optimization was key here. Seeing the system handle 1000+ daily transactions without a hitch was incredibly satisfying."
+        },
+        {
+            "name": "Food Planner",
+            "tag": "AI Meal Assistant",
+            "stack": [
+                "React Native",
+                "Firebase",
+                "Spoonacular API"
+            ],
+            "highlights": [
+                "Image-based food recognition",
+                "AI-powered personalized meal recommendations"
+            ],
+            "longDescription": "Food Planner is a mobile application that helps users maintain a healthy diet by generating personalized meal plans. It features an AI-powered food recognition system that allows users to snap a picture of ingredients to get recipe suggestions.",
+            "features": [
+                "Ingredient Recognition: AI analysis of food photos.",
+                "Meal Planning: Weekly meal schedules based on dietary preferences.",
+                "Calorie Tracking: Integrated nutritional info from Spoonacular.",
+                "Shopping List: Auto-generated lists from selected recipes."
+            ],
+            "challenges": [
+                "Integrating and optimizing the image recognition model for mobile devices.",
+                "Handling API rate limits gracefully."
+            ],
+            "developerThought": "This project bridged my interest in AI and mobile dev. It's fascinating how much value simple AI integrations can add to everyday apps."
+        },
+        {
+            "name": "MyMC Web",
+            "tag": "Minecraft Store Integration",
+            "stack": [
+                "Node.js",
+                "Express.js",
+                "MongoDB"
+            ],
+            "highlights": [
+                "Game inventory & Discord store integration",
+                "Automated purchase flow"
+            ],
+            "longDescription": "MyMC Web connects Minecraft game servers with a web-based store and Discord community. It automates the delivery of in-game items upon purchase and syncs player ranks across the game and Discord.",
+            "features": [
+                "Automated Delivery: Instant item delivery in-game.",
+                "Discord Sync: Roles and ranks synchronized automatically.",
+                "Storefront: Web interface for browsing and purchasing items.",
+                "Admin Panel: Manage sales and player logs."
+            ],
+            "developerThought": "Automation is powerful. Saving server admins hours of manual work every week was a huge win."
+        },
+        {
+            "name": "Pet Care Management System",
+            "stack": [
+                "Django",
+                "PostgreSQL"
+            ],
+            "highlights": [
+                "Handled 1000+ appointments",
+                "Digital pet health records",
+                "Hospital management workflow"
+            ],
+            "longDescription": "A robust management system for veterinary clinics. It streamlines appointment scheduling, manages digital health records for pets, and handles billing and inventory for the clinic.",
+            "features": [
+                "Appointment Scheduling: Calendar view for vets.",
+                "Electronic Health Records (EHR): Digital history for every pet.",
+                "Inventory Management: Track medicines and supplies.",
+                "Billing: diverse payment options and invoice generation."
+            ],
+            "developerThought": "My first deep dive into Django. Its 'batteries-included' philosophy really sped up development for this CRUD-heavy application."
+        }
+    ],
+    "virtualInternships": [
+        {
+            "company": "Accenture (Forage)",
+            "role": "Software Engineer Virtual Intern",
+            "year": "July 2025",
+            "highlights": [
+                "Agile sprint collaboration",
+                "Code reviews",
+                "Backend contribution",
+                "Technical documentation"
+            ]
+        },
+        {
+            "company": "Datacom (Forage)",
+            "role": "Software Developer Virtual Intern",
+            "year": "July 2025",
+            "highlights": [
+                "Improved platform stability by 40%",
+                "Enhanced UI/UX by 25%",
+                "Bug fixing and sprint planning"
+            ]
+        }
+    ],
+    "certifications": [
+        "Full Stack Web Development – Udemy",
+        "React Native with Firebase – Self-learning",
+        "Python for Machine Learning – Online"
+    ],
+    "achievements": [
+        "Built and deployed 5+ full stack production applications",
+        "Leading internal enterprise portal development",
+        "Strong focus on scalable architecture",
+        "Active in automation and game modding communities"
+    ],
+    "currentFocus": [
+        "Microservices and event-driven systems",
+        "AI-powered applications",
+        "Enterprise software architecture",
+        "High-performance backend systems"
+    ],
+    "careerGoal": "To become a top-tier full stack architect building intelligent, scalable, real-world products."
+}
