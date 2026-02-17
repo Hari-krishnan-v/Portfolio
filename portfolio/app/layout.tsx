@@ -79,11 +79,9 @@ export default function RootLayout({
 
                 <DesktopProvider>
                     {/* Desktop Wallpaper */}
-                    import Image from "next/image";
-
                     <div className="fixed inset-0 -z-10">
                         <Image
-                            src="/background.jpg"
+                            src="/background.webp"
                             alt="Background"
                             fill
                             priority
