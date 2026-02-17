@@ -2,9 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { portfolioData } from '@/data/portfolio';
-import { Mail, Phone, MapPin, Copy, Check, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Copy, Check, Send, Terminal } from 'lucide-react';
 import { useState } from 'react';
-import { Magnetic } from '@/components/ui/Magnetic';
+import { MacWindow } from '@/components/ui/MacWindow';
 
 export function Contact() {
     const { personalInfo } = portfolioData;
@@ -17,142 +17,116 @@ export function Contact() {
     };
 
     return (
-        <section id="contact" className="py-32 relative overflow-hidden bg-background">
-            <div className="absolute bottom-0 left-0 w-full h-[500px] bg-gradient-to-t from-blue-900/10 to-transparent pointer-events-none" />
+        <section id="contact" className="py-20 bg-background relative overflow-hidden">
+            <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
 
-            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white tracking-tight">Let's Work Together</h2>
-                    <p className="text-gray-400 text-lg mb-12 leading-relaxed max-w-lg">
-                        I'm currently available for freelance projects and open to new full-time opportunities.
-                        If you have a project that needs some creative touch, or just want to say hi, feel free to drop me a message.
-                    </p>
+                {/* Contact Info (Left Side) */}
+                <div className="flex flex-col justify-center">
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        <div className="flex items-center gap-2 mb-6">
+                            <Terminal className="text-terminal-green" size={32} />
+                            <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight font-mono">
+                                ./contact_me
+                            </h2>
+                        </div>
 
-                    <div className="space-y-8">
-                        <div className="flex items-center gap-6 group">
-                            <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-white group-hover:bg-blue-500 group-hover:border-blue-500 transition-all duration-300">
-                                <Mail size={24} />
-                            </div>
-                            <div>
-                                <p className="text-sm text-gray-500 font-medium mb-1">Email</p>
-                                <div className="flex items-center gap-3">
-                                    <a href={`mailto:${personalInfo.email}`} className="text-xl font-medium text-white hover:text-blue-400 transition-colors">
-                                        {personalInfo.email}
+                        <p className="text-gray-400 text-lg mb-12 leading-relaxed max-w-lg font-mono">
+                            {">"} I'm currently available for freelance projects and new opportunities.
+                            <br /><span className="text-terminal-blue">{"//"} Drop a line below.</span>
+                        </p>
+
+                        <div className="space-y-6 font-mono text-sm">
+                            <div className="flex items-center gap-4 group">
+                                <span className="text-terminal-purple">{">"}</span>
+                                <span className="w-24 text-gray-500">const email</span>
+                                <span className="text-terminal-yellow">=</span>
+                                <div className="flex items-center gap-2">
+                                    <a href={`mailto:${personalInfo.email}`} className="text-terminal-green hover:underline">
+                                        "{personalInfo.email}"
                                     </a>
-                                    <button onClick={handleCopy} className="text-gray-500 hover:text-white transition-colors p-1" title="Copy email">
-                                        {copied ? <Check size={18} className="text-green-500" /> : <Copy size={18} />}
+                                    <button onClick={handleCopy} className="text-gray-600 hover:text-white transition-colors" title="Copy">
+                                        {copied ? <Check size={14} /> : <Copy size={14} />}
                                     </button>
                                 </div>
                             </div>
-                        </div>
 
-                        <div className="flex items-center gap-6 group">
-                            <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-white group-hover:bg-blue-500 group-hover:border-blue-500 transition-all duration-300">
-                                <Phone size={24} />
+                            <div className="flex items-center gap-4 group">
+                                <span className="text-terminal-purple">{">"}</span>
+                                <span className="w-24 text-gray-500">const phone</span>
+                                <span className="text-terminal-yellow">=</span>
+                                <span className="text-terminal-green">"{personalInfo.phone}"</span>
                             </div>
-                            <div>
-                                <p className="text-sm text-gray-500 font-medium mb-1">Phone</p>
-                                <p className="text-xl font-medium text-white">{personalInfo.phone}</p>
-                            </div>
-                        </div>
 
-                        <div className="flex items-center gap-6 group">
-                            <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-white group-hover:bg-blue-500 group-hover:border-blue-500 transition-all duration-300">
-                                <MapPin size={24} />
-                            </div>
-                            <div>
-                                <p className="text-sm text-gray-500 font-medium mb-1">Location</p>
-                                <p className="text-xl font-medium text-white">{personalInfo.location}</p>
+                            <div className="flex items-center gap-4 group">
+                                <span className="text-terminal-purple">{">"}</span>
+                                <span className="w-24 text-gray-500">const loc</span>
+                                <span className="text-terminal-yellow">=</span>
+                                <span className="text-terminal-green">"{personalInfo.location}"</span>
                             </div>
                         </div>
-                    </div>
-                </motion.div>
+                    </motion.div>
+                </div>
 
+                {/* Form (Right Side) */}
                 <motion.div
-                    initial={{ opacity: 0, x: 50 }}
+                    initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    className="bg-neutral-900/50 backdrop-blur-xl p-8 rounded-3xl border border-white/10 shadow-2xl relative"
                 >
-                    <form className="space-y-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="space-y-2">
-                                <label htmlFor="name" className="text-sm font-medium text-gray-400 ml-1">Name</label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-white placeholder:text-gray-600"
-                                    placeholder="John Doe"
-                                />
+                    <MacWindow id="contact" title="send_message.sh" className="bg-[#0d1117] border-terminal-border">
+                        <form className="space-y-4 font-mono text-sm p-2">
+                            <div className="space-y-1">
+                                <label htmlFor="name" className="block text-[#8b949e] text-xs"># Enter your name</label>
+                                <div className="flex items-center gap-2 bg-[#161b22] border border-[#30363d] rounded px-3 py-2 text-[#c9d1d9] focus-within:border-terminal-blue">
+                                    <span className="text-terminal-pink">$</span>
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        className="bg-transparent border-none outline-none w-full placeholder-gray-700"
+                                        placeholder="John Doe"
+                                    />
+                                </div>
                             </div>
-                            <div className="space-y-2">
-                                <label htmlFor="email" className="text-sm font-medium text-gray-400 ml-1">Email</label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-white placeholder:text-gray-600"
-                                    placeholder="john@example.com"
-                                />
-                            </div>
-                        </div>
-                        <div className="space-y-2">
-                            <label htmlFor="subject" className="text-sm font-medium text-gray-400 ml-1">Subject</label>
-                            <input
-                                type="text"
-                                id="subject"
-                                className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-white placeholder:text-gray-600"
-                                placeholder="Project Inquiry"
-                            />
-                        </div>
-                        <div className="space-y-2">
-                            <label htmlFor="message" className="text-sm font-medium text-gray-400 ml-1">Message</label>
-                            <textarea
-                                id="message"
-                                rows={4}
-                                className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none text-white placeholder:text-gray-600"
-                                placeholder="Tell me about your project..."
-                            />
-                        </div>
 
-                        <Magnetic strength={0.2} >
+                            <div className="space-y-1">
+                                <label htmlFor="email" className="block text-[#8b949e] text-xs"># Enter your email</label>
+                                <div className="flex items-center gap-2 bg-[#161b22] border border-[#30363d] rounded px-3 py-2 text-[#c9d1d9] focus-within:border-terminal-blue">
+                                    <span className="text-terminal-pink">$</span>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        className="bg-transparent border-none outline-none w-full placeholder-gray-700"
+                                        placeholder="john@example.com"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="space-y-1">
+                                <label htmlFor="message" className="block text-[#8b949e] text-xs"># Enter your message</label>
+                                <div className="flex items-start gap-2 bg-[#161b22] border border-[#30363d] rounded px-3 py-2 text-[#c9d1d9] focus-within:border-terminal-blue">
+                                    <span className="text-terminal-pink mt-1">{">"}</span>
+                                    <textarea
+                                        id="message"
+                                        rows={4}
+                                        className="bg-transparent border-none outline-none w-full resize-none placeholder-gray-700"
+                                        placeholder="System status report..."
+                                    />
+                                </div>
+                            </div>
+
                             <button
                                 type="submit"
-                                className="
-    group relative w-full overflow-hidden
-    rounded-xl px-5 py-3
-    bg-neutral-900/50 backdrop-blur-xl
-    border border-white/10
-    text-white font-semibold tracking-wide
-
-    flex items-center justify-center gap-2
-
-    transition-all duration-300 ease-out
-    hover:bg-neutral-800/70
-    hover:border-blue-500/40
-    hover:shadow-lg hover:shadow-blue-500/20
-
-    active:scale-[0.98]
-  "
+                                className="w-full mt-4 bg-terminal-green/10 text-terminal-green border border-terminal-green hover:bg-terminal-green hover:text-black py-3 rounded font-bold transition-all flex items-center justify-center gap-2 group"
                             >
-                                {/* subtle glow */}
-                                <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 bg-gradient-to-r from-blue-500/10 via-cyan-400/10 to-purple-500/10" />
-
-                                {/* content */}
-                                <span className="relative flex items-center gap-2">
-                                    Send Message
-                                    <Send
-                                        size={18}
-                                        className="transition-transform duration-300 group-hover:translate-x-1"
-                                    />
-                                </span>
+                                <span>./send_message</span>
+                                <Send size={16} className="group-hover:translate-x-1 transition-transform" />
                             </button>
-
-                        </Magnetic>
-                    </form>
+                        </form>
+                    </MacWindow>
                 </motion.div>
             </div>
         </section>

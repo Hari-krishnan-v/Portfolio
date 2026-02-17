@@ -1,13 +1,13 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { portfolioData, Project } from '@/data/portfolio';
-import { Github, ExternalLink, ArrowRight, FolderGit2 } from 'lucide-react';
+import { Github, ExternalLink, ArrowRight, Folder, FileCode, FolderGit2 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { TiltCard } from '@/components/ui/3d-card';
 import { useState } from 'react';
 import { ProjectModal } from '@/components/ui/ProjectModal';
+import { MacWindow } from '@/components/ui/MacWindow';
 
 export function Projects() {
     const { projects } = portfolioData;
@@ -15,126 +15,87 @@ export function Projects() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
-        <section id="projects" className="py-32 bg-background relative">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-background to-background pointer-events-none" />
+        <section id="projects" className="py-20 bg-background relative overflow-hidden">
 
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="mb-20 text-center"
-                >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white tracking-tight">Featured Projects</h2>
-                    <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-                        A selection of projects that demonstrate my passion for building scalable and intelligent systems.
-                    </p>
-                </motion.div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {projects.map((project, idx) => (
-                        <div
-                            key={idx}
-                            onClick={() => {
-                                setSelectedProject(project);
-                                setIsModalOpen(true);
-                            }}
-                            className="cursor-pointer h-full"
-                        >
-                            <TiltCard className="h-full">
-                                <ProjectCardContent project={project} />
-                            </TiltCard>
+            <div className="max-w-7xl mx-auto px-6">
+                <MacWindow id="projects" title="~/projects (File Explorer)" className="bg-[#0d1117] min-h-[600px] border-terminal-border">
+                    {/* Toolbar / Breadcrumbs */}
+                    <div className="flex items-center gap-4 px-2 py-3 border-b border-[#30363d] mb-6 text-sm text-[#8b949e]">
+                        <div className="flex gap-2">
+                            <div className="p-1 hover:bg-[#30363d] rounded cursor-pointer">
+                                <ArrowRight className="rotate-180" size={16} />
+                            </div>
+                            <div className="p-1 hover:bg-[#30363d] rounded cursor-pointer">
+                                <ArrowRight size={16} />
+                            </div>
                         </div>
-                    ))}
-
-                    {selectedProject && (
-                        <ProjectModal
-                            project={selectedProject}
-                            isOpen={isModalOpen}
-                            onClose={() => setIsModalOpen(false)}
-                        />
-                    )}
-                </div>
-            </div>
-        </section>
-    );
-}
-
-function ProjectCardContent({ project }: { project: Project }) {
-    return (
-        <div className="group bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 shadow-xl h-full flex flex-col transition-all duration-300">
-            <div className="h-48 bg-neutral-900 relative overflow-hidden group">
-                {/* Banner Image or Abstract Pattern */}
-                {project.banner ? (
-                    <>
-                        <Image
-                            src={project.banner}
-                            alt={project.name}
-                            fill
-                            className="object-cover opacity-40 transition-transform duration-500 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-br from-neutral-800/50 to-neutral-900/50 mix-blend-multiply" />
-                    </>
-                ) : (
-                    <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
-                )}
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <FolderGit2 size={48} className="text-white/20" />
-                </div>
-
-                <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
-                    <span className="px-3 py-1 bg-blue-500/20 backdrop-blur-md border border-blue-500/30 rounded-full text-xs font-semibold text-blue-300 shadow-sm">
-                        {project.tag || 'Project'}
-                    </span>
-                </div>
-            </div>
-
-            <div className="p-6 flex flex-col flex-grow">
-                <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
-                        {project.name}
-                    </h3>
-                    <div className="flex gap-3 relative z-20">
-                        {project.github && (
-                            <Link href={project.github} target="_blank" className="text-gray-400 hover:text-white transition-colors" onClick={(e) => e.stopPropagation()}>
-                                <Github size={20} />
-                            </Link>
-                        )}
-                        {project.link && (
-                            <Link href={project.link} target="_blank" className="text-gray-400 hover:text-white transition-colors" onClick={(e) => e.stopPropagation()}>
-                                <ExternalLink size={20} />
-                            </Link>
-                        )}
+                        <div className="bg-[#161b22] px-3 py-1 rounded border border-[#30363d] flex-1 font-mono text-xs">
+                            ~/home/user/projects
+                        </div>
                     </div>
-                </div>
 
-                <div className="mb-6 flex flex-wrap gap-2">
-                    {project.stack.slice(0, 4).map((tech, i) => (
-                        <span key={i} className="text-xs text-gray-300 bg-white/5 border border-white/5 px-2 py-1 rounded">
-                            {tech}
-                        </span>
-                    ))}
-                    {project.stack.length > 4 && (
-                        <span className="text-xs text-gray-500 px-1 py-1">+{project.stack.length - 4}</span>
-                    )}
-                </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-2">
+                        {projects.map((project, idx) => (
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.1 }}
+                                onClick={() => {
+                                    setSelectedProject(project);
+                                    setIsModalOpen(true);
+                                }}
+                                className="group cursor-pointer relative bg-[#161b22] border border-[#30363d] rounded-lg p-4 hover:border-terminal-blue hover:bg-[#1c2128] transition-all duration-200"
+                            >
+                                <div className="flex items-start gap-4">
+                                    <div className="shrink-0 text-terminal-blue group-hover:text-terminal-cyan transition-colors">
+                                        <FolderGit2 size={40} />
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                        <h3 className="text-[#c9d1d9] font-semibold truncate group-hover:text-terminal-blue font-mono text-sm">
+                                            {project.name}
+                                        </h3>
+                                        <p className="text-[#8b949e] text-xs mt-1 truncate">
+                                            Last modified: {new Date().toLocaleDateString()}
+                                        </p>
+                                        <div className="mt-3 flex flex-wrap gap-2">
+                                            {project.stack.slice(0, 3).map((tech, i) => (
+                                                <span key={i} className="text-[10px] px-1.5 py-0.5 rounded-sm bg-[#30363d] text-[#c9d1d9] border border-white/5 font-mono">
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
 
-                <ul className="space-y-2 mb-6 flex-grow">
-                    {project.highlights.slice(0, 2).map((highlight, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-gray-400">
-                            <span className="mt-1.5 w-1 h-1 bg-blue-500 rounded-full flex-shrink-0" />
-                            {highlight}
-                        </li>
-                    ))}
-                </ul>
+                                {/* Hover details */}
+                                <div className="mt-4 pt-4 border-t border-[#30363d] opacity-60 group-hover:opacity-100 transition-opacity">
+                                    <p className="text-[#8b949e] text-xs line-clamp-2">
+                                        {project.highlights && project.highlights[0]}
+                                    </p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
 
-                <button className="text-sm font-medium text-white flex items-center gap-1 hover:gap-2 transition-all mt-auto group/btn">
-                    View Details <ArrowRight size={16} className="text-blue-500 group-hover/btn:translate-x-1 transition-transform" />
-                </button>
+                    {/* Footer Status Bar */}
+                    <div className="mt-8 pt-3 border-t border-[#30363d] flex justify-between text-xs text-[#8b949e] font-mono px-2">
+                        <div>{projects.length} objects</div>
+                        <div>Total Size: 42MB</div>
+                    </div>
+                </MacWindow>
             </div>
-        </div>
+
+            <AnimatePresence>
+                {selectedProject && isModalOpen && (
+                    <ProjectModal
+                        project={selectedProject}
+                        isOpen={isModalOpen}
+                        onClose={() => setIsModalOpen(false)}
+                    />
+                )}
+            </AnimatePresence>
+        </section>
     );
 }

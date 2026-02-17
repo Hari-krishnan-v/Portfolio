@@ -2,119 +2,112 @@
 
 import { motion } from 'framer-motion';
 import { portfolioData } from '@/data/portfolio';
-import { TextReveal } from '@/components/ui/TextReveal';
+import { MacWindow } from '@/components/ui/MacWindow';
+import { TerminalBlock, CommentBlock } from '@/components/ui/TerminalBlock';
 
 export function About() {
     const { professionalSummary, education, experience } = portfolioData;
 
     return (
-        <section id="about" className="py-32 bg-background relative overflow-hidden">
-            {/* Decorative gradient blob */}
-            <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
+        <section id="about" className="py-20 bg-background relative overflow-hidden">
 
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        <h2 className="text-sm font-semibold text-blue-500 tracking-wider uppercase mb-4">About Me</h2>
-                        <h3 className="text-3xl md:text-4xl font-bold text-white mb-8 leading-tight">
-                            Passionate about creating digital experiences that matter.
-                        </h3>
-
-                        <div className="text-lg text-gray-400 leading-relaxed space-y-6">
-                            <TextReveal delay={0.2}>
-                                {professionalSummary}
-                            </TextReveal>
-                        </div>
-                    </motion.div>
-
-                    <div className="space-y-8">
-                        {/* Experience Highlight */}
+            <div className="max-w-4xl mx-auto px-6">
+                <MacWindow id="about" title="README.md" className="border-terminal-border">
+                    <div className="font-mono text-sm md:text-base space-y-6">
+                        {/* Heading */}
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="space-y-2"
+                        >
+                            <div className="flex gap-2">
+                                <span className="text-terminal-blue font-bold">#</span>
+                                <h2 className="text-xl md:text-2xl font-bold text-foreground">About Me</h2>
+                            </div>
+                            <CommentBlock>
+                                {"> Passionate about creating digital experiences that matter."}
+                            </CommentBlock>
+                            <p className="text-[#c9d1d9] leading-relaxed pl-4 border-l-2 border-[#30363d]">
+                                {professionalSummary}
+                            </p>
+                        </motion.div>
+
+                        <div className="h-px bg-[#30363d] w-full my-6" />
+
+                        {/* Experience Section as Code/List */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 transition-colors relative"
+                            className="space-y-4"
                         >
-                            <h4 className="text-xl font-semibold text-white mb-6 flex items-center gap-3">
-                                <span className="w-8 h-[1px] bg-blue-500"></span>
-                                Latest Experience
-                            </h4>
+                            <div className="flex gap-2 items-center">
+                                <span className="text-terminal-blue font-bold">##</span>
+                                <h3 className="text-lg font-bold text-foreground">Latest Experience</h3>
+                            </div>
 
-                            {experience.slice(0, 2).map((exp, idx) => (
-                                <div
-                                    key={idx}
-                                    className="mb-6 last:mb-0 relative group"
-                                >
-                                    <div className="flex justify-between items-baseline mb-1">
-                                        <h5 className="text-lg font-medium text-white">{exp.role}</h5>
-                                        <span className="text-sm text-gray-500">{exp.employmentType}</span>
-                                    </div>
-                                    <p className="text-blue-400 text-sm mb-2">{exp.company}</p>
-
-                                    {/* Hover Card */}
-                                    {exp.companyDescription && (
-                                        <div className="absolute left-0 bottom-full mb-4 w-72 p-4 bg-gray-900/90 backdrop-blur-md rounded-xl border border-white/10 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-2 group-hover:translate-y-0">
-                                            <div className="flex items-center justify-between mb-2">
-                                                <h6 className="font-semibold text-white">{exp.company}</h6>
-                                                {exp.companyLocation && (
-                                                    <span className="text-xs text-gray-400">{exp.companyLocation}</span>
-                                                )}
-                                            </div>
-                                            <p className="text-xs text-gray-300 leading-relaxed mb-3">
-                                                {exp.companyDescription}
-                                            </p>
-                                            {exp.companyUrl && (
-                                                <a
-                                                    href={exp.companyUrl}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="inline-flex items-center text-xs text-blue-400 hover:text-blue-300 transition-colors"
-                                                >
-                                                    Visit Website
-                                                    <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                                    </svg>
-                                                </a>
-                                            )}
-                                            {/* Arrow */}
-                                            <div className="absolute -bottom-2 left-8 w-4 h-4 bg-gray-900/90 border-r border-b border-white/10 transform rotate-45"></div>
+                            <div className="pl-4 space-y-4">
+                                {experience.slice(0, 2).map((exp, idx) => (
+                                    <div key={idx} className="group">
+                                        <div className="flex flex-wrap items-baseline gap-2">
+                                            <span className="text-terminal-purple">-</span>
+                                            <span className="text-terminal-yellow font-bold">[{exp.role}]</span>
+                                            <span className="text-[#8b949e]">@</span>
+                                            <span className="text-terminal-green hover:underline cursor-pointer">
+                                                {exp.company}
+                                            </span>
+                                            <span className="text-[#8b949e] text-xs">({exp.employmentType})</span>
                                         </div>
-                                    )}
+                                        {exp.companyDescription && (
+                                            <p className="text-[#8b949e] text-xs mt-1 ml-6 pl-2 border-l border-[#30363d]">
+                                                {/* Simulated comment for description */}
+                                                // {exp.companyDescription}
+                                            </p>
+                                        )}
+                                    </div>
+                                ))}
+                                <div className="text-[#8b949e] text-xs mt-2 ml-6">
+                                    <a href="#experience" className="hover:text-terminal-blue underline">...view_full_log</a>
                                 </div>
-                            ))}
+                            </div>
                         </motion.div>
 
-                        {/* Education Highlight */}
+                        <div className="h-px bg-[#30363d] w-full my-6" />
+
+                        {/* Education Section */}
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.3 }}
-                            className="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 transition-colors"
+                            className="space-y-4"
                         >
-                            <h4 className="text-xl font-semibold text-white mb-6 flex items-center gap-3">
-                                <span className="w-8 h-[1px] bg-purple-500"></span>
-                                Education
-                            </h4>
+                            <div className="flex gap-2 items-center">
+                                <span className="text-terminal-blue font-bold">##</span>
+                                <h3 className="text-lg font-bold text-foreground">Education</h3>
+                            </div>
 
-                            {education.map((edu, idx) => (
-                                <div key={idx} className="mb-4 last:mb-0">
-                                    <h5 className="text-lg font-medium text-white">{edu.degree}</h5>
-                                    <div className="flex justify-between items-center text-sm text-gray-500 mt-1">
-                                        <span>{edu.university}</span>
-                                        <span>{edu.year}</span>
+                            <div className="pl-4 space-y-4">
+                                {education.map((edu, idx) => (
+                                    <div key={idx}>
+                                        <div className="flex flex-wrap items-baseline gap-2">
+                                            <span className="text-terminal-purple">-</span>
+                                            <span className="text-[#c9d1d9] ">{edu.degree}</span>
+                                        </div>
+                                        <div className="flex flex-wrap items-baseline gap-2 ml-4 text-sm">
+                                            <span className="text-[#8b949e]">in</span>
+                                            <span className="text-terminal-cyan ">{edu.university}</span>
+                                            <span className="text-[#8b949e]">({edu.year})</span>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </motion.div>
+
                     </div>
-                </div>
+                </MacWindow>
             </div>
         </section>
     );

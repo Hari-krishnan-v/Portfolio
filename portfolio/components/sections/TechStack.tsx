@@ -2,83 +2,69 @@
 
 import { motion } from 'framer-motion';
 import { portfolioData } from '@/data/portfolio';
-import { Spotlight } from '@/components/ui/Spotlight';
+import { MacWindow } from '@/components/ui/MacWindow';
 import { SkillIcon } from '@/components/ui/SkillIcon';
 
 export function TechStack() {
     const { skills } = portfolioData;
 
     const categories = [
-        { name: 'Languages', items: skills.languages },
-        { name: 'Frontend', items: skills.frontend },
-        { name: 'Backend', items: skills.backend },
-        { name: 'Databases', items: skills.databases },
-        { name: 'DevOps & Tools', items: skills.devopsAndTools },
-        { name: 'Architecture', items: skills.architecture },
+        { id: "languages", name: "Languages", items: skills.languages },
+        { id: "frontend", name: "Frontend / UI", items: skills.frontend },
+        { id: "backend", name: "Backend / API", items: skills.backend },
+        { id: "database", name: "Databases", items: skills.databases },
+        { id: "tools", name: "Tools / DevOps", items: skills.devopsAndTools },
     ];
 
-    const container = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.05
-            }
-        }
-    };
-
-    const item = {
-        hidden: { opacity: 0, y: 10 },
-        visible: { opacity: 1, y: 0 }
-    };
-
     return (
-        <section id="skills" className="py-32 relative bg-background">
-            <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+        <section id="skills" className="py-20 bg-background relative overflow-hidden">
+            <div className="max-w-5xl mx-auto px-6">
+                <MacWindow id="skills" title="package.json" className="bg-[#0d1117] border-terminal-border">
+                    <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-8 font-mono text-xs">
 
-            <div className="max-w-7xl mx-auto px-6">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="mb-20 text-center"
-                >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white tracking-tight">Technical Arsenal</h2>
-                    <p className="text-gray-400 max-w-2xl mx-auto text-lg">The tools and technologies I use to bring ideas to life.</p>
-                </motion.div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {categories.map((cat, idx) => (
-                        <motion.div
-                            key={idx}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, margin: "-50px" }}
-                            variants={container}
-                            custom={idx}
-                        >
-                            <Spotlight className="h-full rounded-2xl border border-white/10 bg-white/5 p-8 hover:border-white/20 transition-colors">
-                                <h3 className="text-xl font-semibold mb-6 text-white flex items-center gap-2">
-                                    <span className="w-2 h-2 rounded-full bg-blue-500 inline-block shadow-[0_0_8px_rgba(59,130,246,0.5)]"></span>
-                                    {cat.name}
-                                </h3>
-                                <div className="flex flex-wrap gap-2">
-                                    {cat.items.map((skill, sIdx) => (
-                                        <motion.div
-                                            key={sIdx}
-                                            variants={item}
-                                            whileHover={{ scale: 1.05, y: -2 }}
-                                            className="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white rounded-md text-sm transition-colors border border-white/5 hover:border-white/20 flex items-center gap-2 cursor-default"
-                                        >
-                                            <SkillIcon name={skill} />
-                                            <span>{skill}</span>
-                                        </motion.div>
-                                    ))}
+                        {/* JSON View */}
+                        <div className="overflow-x-auto">
+                            <span className="text-terminal-yellow line-number">1 </span>
+                            <span className="text-terminal-yellow">{`{`}</span>
+                            {categories.map((cat, catIdx) => (
+                                <div key={cat.id} className="pl-4">
+                                    <span className="text-terminal-blue">"{cat.id}"</span>
+                                    <span className="text-[#c9d1d9]">: </span>
+                                    <span className="text-terminal-yellow">{"["}</span>
+                                    <div className="pl-4">
+                                        {cat.items.map((item, i) => (
+                                            <div key={i}>
+                                                <span className="text-terminal-green">"{item}"</span>
+                                                {i < cat.items.length - 1 && <span className="text-[#c9d1d9]">,</span>}
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <span className="text-terminal-yellow">{"]"}</span>
+                                    {catIdx < categories.length - 1 && <span className="text-[#c9d1d9]">,</span>}
                                 </div>
-                            </Spotlight>
-                        </motion.div>
-                    ))}
-                </div>
+                            ))}
+                            <span className="text-terminal-yellow line-number">{categories.length * 10} </span>
+                            <span className="text-terminal-yellow">{`}`}</span>
+                        </div>
+
+                        {/* Interactive Icons View */}
+                        <div className="hidden lg:flex flex-col gap-6 border-l border-[#30363d] pl-8">
+                            {categories.map((cat) => (
+                                <div key={cat.id + "-icons"}>
+                                    <h4 className="text-[#8b949e] text-[10px] uppercase tracking-wider mb-3">
+                                        // {cat.name}
+                                    </h4>
+                                    <div className="flex flex-wrap gap-2">
+                                        {cat.items.map((item) => (
+                                            <SkillIcon key={item} name={item} className="w-8 h-8 p-1.5" />
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                    </div>
+                </MacWindow>
             </div>
         </section>
     );
