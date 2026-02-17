@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { portfolioData } from '@/data/portfolio';
 import { Spotlight } from '@/components/ui/Spotlight';
+import { SkillIcon } from '@/components/ui/SkillIcon';
 
 export function TechStack() {
     const { skills } = portfolioData;
@@ -66,9 +67,10 @@ export function TechStack() {
                                         <motion.div
                                             key={sIdx}
                                             variants={item}
-                                            className="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white rounded-md text-sm transition-all border border-white/5 hover:border-white/20"
+                                            className="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white rounded-md text-sm transition-all border border-white/5 hover:border-white/20 flex items-center gap-2"
                                         >
-                                            {skill}
+                                            <SkillIcon name={skill} />
+                                            <span>{skill}</span>
                                         </motion.div>
                                     ))}
                                 </div>

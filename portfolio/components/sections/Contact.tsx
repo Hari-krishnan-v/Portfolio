@@ -121,10 +121,36 @@ export function Contact() {
                         <Magnetic strength={0.2} >
                             <button
                                 type="submit"
-                                className="w-full py-4 bg-gradient-to-r from-blue-600 to-violet-600 text-white rounded-xl font-bold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all active:scale-[0.99] transform duration-200 flex items-center justify-center gap-2"
+                                className="
+    group relative w-full overflow-hidden
+    rounded-xl px-5 py-3
+    bg-neutral-900/50 backdrop-blur-xl
+    border border-white/10
+    text-white font-semibold tracking-wide
+
+    flex items-center justify-center gap-2
+
+    transition-all duration-300 ease-out
+    hover:bg-neutral-800/70
+    hover:border-blue-500/40
+    hover:shadow-lg hover:shadow-blue-500/20
+
+    active:scale-[0.98]
+  "
                             >
-                                Send Message <Send size={20} />
+                                {/* subtle glow */}
+                                <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 bg-gradient-to-r from-blue-500/10 via-cyan-400/10 to-purple-500/10" />
+
+                                {/* content */}
+                                <span className="relative flex items-center gap-2">
+                                    Send Message
+                                    <Send
+                                        size={18}
+                                        className="transition-transform duration-300 group-hover:translate-x-1"
+                                    />
+                                </span>
                             </button>
+
                         </Magnetic>
                     </form>
                 </motion.div>
