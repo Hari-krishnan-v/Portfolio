@@ -18,6 +18,9 @@ export interface Experience {
     employmentType: string;
     previousRole?: string;
     description: string[];
+    companyUrl?: string;
+    companyDescription?: string;
+    companyLocation?: string;
 }
 
 export interface Education {
