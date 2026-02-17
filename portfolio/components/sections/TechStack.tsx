@@ -22,13 +22,13 @@ export function TechStack() {
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.1
+                staggerChildren: 0.05
             }
         }
     };
 
     const item = {
-        hidden: { opacity: 0, y: 20 },
+        hidden: { opacity: 0, y: 10 },
         visible: { opacity: 1, y: 0 }
     };
 
@@ -53,13 +53,13 @@ export function TechStack() {
                             key={idx}
                             initial="hidden"
                             whileInView="visible"
-                            viewport={{ once: true }}
+                            viewport={{ once: true, margin: "-50px" }}
                             variants={container}
                             custom={idx}
                         >
-                            <Spotlight className="h-full rounded-2xl border border-white/10 bg-white/5 p-8">
+                            <Spotlight className="h-full rounded-2xl border border-white/10 bg-white/5 p-8 hover:border-white/20 transition-colors">
                                 <h3 className="text-xl font-semibold mb-6 text-white flex items-center gap-2">
-                                    <span className="w-2 h-2 rounded-full bg-blue-500 inline-block"></span>
+                                    <span className="w-2 h-2 rounded-full bg-blue-500 inline-block shadow-[0_0_8px_rgba(59,130,246,0.5)]"></span>
                                     {cat.name}
                                 </h3>
                                 <div className="flex flex-wrap gap-2">
@@ -67,7 +67,8 @@ export function TechStack() {
                                         <motion.div
                                             key={sIdx}
                                             variants={item}
-                                            className="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white rounded-md text-sm transition-all border border-white/5 hover:border-white/20 flex items-center gap-2"
+                                            whileHover={{ scale: 1.05, y: -2 }}
+                                            className="px-3 py-1.5 bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white rounded-md text-sm transition-colors border border-white/5 hover:border-white/20 flex items-center gap-2 cursor-default"
                                         >
                                             <SkillIcon name={skill} />
                                             <span>{skill}</span>
