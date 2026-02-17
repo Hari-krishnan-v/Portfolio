@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { portfolioData, Project } from '@/data/portfolio';
 import { Github, ExternalLink, ArrowRight, FolderGit2 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { TiltCard } from '@/components/ui/3d-card';
 import { useState } from 'react';
 import { ProjectModal } from '@/components/ui/ProjectModal';
@@ -63,8 +64,21 @@ function ProjectCardContent({ project }: { project: Project }) {
     return (
         <div className="group bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 shadow-xl h-full flex flex-col transition-all duration-300">
             <div className="h-48 bg-neutral-900 relative overflow-hidden group">
-                {/* Modern Abstract Placeholder Pattern */}
-                <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
+                {/* Banner Image or Abstract Pattern */}
+                {project.banner ? (
+                    <>
+                        <Image
+                            src={project.banner}
+                            alt={project.name}
+                            fill
+                            className="object-cover opacity-40 transition-transform duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-br from-neutral-800/50 to-neutral-900/50 mix-blend-multiply" />
+                    </>
+                ) : (
+                    <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:20px_20px]" />
+                )}
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
 
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">

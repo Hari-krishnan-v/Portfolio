@@ -86,6 +86,7 @@
         {
             "name": "RentEazy",
             "tag": "Rental Property Management Platform",
+            "banner": "/renteazy.png",
             "status": "Ongoing",
             "stack": [
                 "TypeScript",
@@ -122,6 +123,7 @@
         {
             "name": "ShopeMe",
             "tag": "Retail Billing System",
+            "banner": "/shopeme.png",
             "stack": [
                 "Node.js",
                 "Express.js",
@@ -150,6 +152,7 @@
         {
             "name": "Food Planner",
             "tag": "AI Meal Assistant",
+            "banner": "/foodplanner.png",
             "stack": [
                 "React Native",
                 "Firebase",
@@ -175,6 +178,7 @@
         {
             "name": "MyMC Web",
             "tag": "Minecraft Store Integration",
+            "banner": "/mymc.png",
             "stack": [
                 "Node.js",
                 "Express.js",
@@ -195,6 +199,7 @@
         },
         {
             "name": "Pet Care Management System",
+            "banner": "/petcare.png",
             "stack": [
                 "Django",
                 "PostgreSQL"

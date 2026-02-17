@@ -4,6 +4,7 @@ import { motion, AnimatePresence, Variants } from "framer-motion";
 import { Project } from '@/data/portfolio';
 import { X, Github, ExternalLink, Quote, Layers, CheckCircle, Terminal, Image as ImageIcon } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect } from 'react';
 
 interface ProjectModalProps {
@@ -78,11 +79,25 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                         animate="visible"
                         exit="exit"
                     >
-                        {/* Header Image Area (Placeholder Gradient since no actual images) */}
-                        <div className="h-48 sm:h-64 w-full bg-gradient-to-br from-neutral-800 to-neutral-900 relative flex-shrink-0">
-                            <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:30px_30px]" />
-                            {/* Abstract Decorative Elements */}
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-blue-500/20 rounded-full blur-[50px]" />
+                        {/* Header Image Area */}
+                        <div className="h-48 sm:h-64 w-full bg-gradient-to-br from-neutral-800 to-neutral-900 relative flex-shrink-0 overflow-hidden">
+                            {project.banner ? (
+                                <>
+                                    <Image
+                                        src={project.banner}
+                                        alt={project.name}
+                                        fill
+                                        className="object-cover opacity-40"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-br from-neutral-800/60 to-neutral-900/60 mix-blend-overlay" />
+                                </>
+                            ) : (
+                                <>
+                                    <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:30px_30px]" />
+                                    {/* Abstract Decorative Elements */}
+                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-blue-500/20 rounded-full blur-[50px]" />
+                                </>
+                            )}
                             <div className="absolute top-0 right-0 p-6">
                                 <button
                                     onClick={onClose}

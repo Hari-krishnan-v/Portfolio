@@ -40,6 +40,7 @@ export interface Skills {
 export interface Project {
     name: string;
     tag?: string;
+    banner?: string;
     status?: string;
     stack: string[];
     highlights: string[];
